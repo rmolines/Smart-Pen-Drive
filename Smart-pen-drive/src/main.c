@@ -281,8 +281,7 @@ int main(void)
 {
 	tstrWifiInitParam param;
 	int8_t ret;
-	struct sockaddr_in addr;
-	
+	struct sockaddr_in addr;	
 	
 
 	/* Initialize the board. */
@@ -325,7 +324,7 @@ int main(void)
 	irq_initialize_vectors();
 	cpu_irq_enable();
 	
-	char test_file_name[] = "0:sd_mmc_test.txt";
+	char test_file_name[] = "0:sd_mmc_test.jpeg";
 	Ctrl_status status;
 	FRESULT res;
 	FATFS fs;
@@ -348,6 +347,14 @@ int main(void)
 	} while (CTRL_GOOD != status);	
 	
 	printf("Mount disk (f_mount)...\r\n");
+	
+	memset(&fs, 0, sizeof(FATFS));
+	res = f_mount(LUN_ID_SD_MMC_0_MEM, &fs);
+	if (FR_INVALID_DRIVE == res) {
+		printf("[FAIL] res %d\r\n", res);
+		goto main_end_of_test;
+	}
+	printf("[OK]\r\n");
 
 	
 	while (1) {
