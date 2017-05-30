@@ -53,13 +53,13 @@ extern "C" {
 #define MAIN_WIFI_M2M_SERVER_IP           0xFFFFFFFF /* 255.255.255.255 */
 
 
-#define HOST_MSG													"GET /"
+#define HOST_MSG													"GET /file/teste.txt"
 #define HOST_MSG_SUFFIX									  " HTTP/1.1\r\n Accept: */*\r\n\r\n"
 
 #define MAIN_WIFI_M2M_BUFFER_SIZE          1460
 
 #define MAIN_SERVER_PORT                   (8081)
-#define MAIN_SERVER_IP                     0xC300A8C0 // 192.168.0.201
+#define MAIN_SERVER_IP                     0xC300A8C0 // 192.168.0.195
 
 #ifdef __cplusplus
 }

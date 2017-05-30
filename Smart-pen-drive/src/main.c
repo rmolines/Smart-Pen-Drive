@@ -352,7 +352,7 @@ int main(void)
 	res = f_mount(LUN_ID_SD_MMC_0_MEM, &fs);
 	if (FR_INVALID_DRIVE == res) {
 		printf("[FAIL] res %d\r\n", res);
-		goto main_end_of_test;
+		//goto main_end_of_test;
 	}
 	printf("[OK]\r\n");
 
