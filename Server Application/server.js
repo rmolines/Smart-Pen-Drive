@@ -12,6 +12,8 @@ app.get('/', function (req, res) {
   var files = fs.readdirSync('./public');
   var lmfiles = {};
 
+  console.log('Chegou alguem');
+
   for (i=0; i<files.length; i++) {
     var stats = fs.statSync('./public/'+files[i]);
     var mtime = new Date(util.inspect(stats.mtime));
@@ -32,11 +34,6 @@ app.get('/file/:name', function (req, res, next) {
 
   var options = {
     root: __dirname + '/public/',
-    headers: {
-        'x-timestamp': Date.now(),
-        'x-sent': true,
-        'x-lm': mtime
-    }
   };
 
   var fileName = req.params.name;
