@@ -183,7 +183,7 @@ static void socket_cb(SOCKET sock, uint8_t u8Msg, void *pvMsg)
 			printf(" ---------- \n Cnt : %d \n -----------\n", ++g_rxCnt);
 			   
       // Para debug das mensagens do socket
-			printf("%s \r\n", pstrRecv->pu8Buffer);   
+			//printf("%s \r\n", pstrRecv->pu8Buffer);   
        
       // limpa o buffer de recepcao e tx
       memset(pstrRecv->pu8Buffer, 0, pstrRecv->s16BufferSize); 

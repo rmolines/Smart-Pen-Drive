@@ -13,6 +13,8 @@ app.get('/', function (req, res) {
   var lmfiles = {};
   console.log("ROOT");
 
+  console.log('Chegou alguem');
+
   for (i=0; i<files.length; i++) {
     var stats = fs.statSync('C:/Users/Rafael/Dropbox/public/'+files[i]);
     var mtime = new Date(util.inspect(stats.mtime));
@@ -38,12 +40,8 @@ app.get('/file/:name', function (req, res, next) {
   console.log(mtime);
 
   var options = {
-    root: 'C:/Users/Rafael/Dropbox/public/',
-    headers: {
-        'x-timestamp': Date.now(),
-        'x-sent': true,
-        'x-lm': mtime
-    }
+
+    root: __dirname + '/public/',
   };
 
   var fileName = req.params.name;
