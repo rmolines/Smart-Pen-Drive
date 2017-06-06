@@ -9,11 +9,12 @@ app.use(express.static('public'));
 app.use('/static', express.static('public'))
 
 app.get('/', function (req, res) {
-  var files = fs.readdirSync('./public');
+  var files = fs.readdirSync('C:/Users/Rafael/Dropbox/public');
   var lmfiles = {};
+  console.log("ROOT");
 
   for (i=0; i<files.length; i++) {
-    var stats = fs.statSync('./public/'+files[i]);
+    var stats = fs.statSync('C:/Users/Rafael/Dropbox/public/'+files[i]);
     var mtime = new Date(util.inspect(stats.mtime));
     lmfiles[files[i]] = mtime;
   }
@@ -21,17 +22,23 @@ app.get('/', function (req, res) {
 })
 
 app.get('/test', function(req, res) {
-  res.sendFile('./static/test.txt');
-})
+  console.log("Teste");
+
+  var obj = {"Teste" : "OK"};
+
+  //res.json(obj);
+  //res.contentType('text/plain');
+  res.sendFile(path.join("C:/Users/Rafael/Dropbox/public/", "teste.txt"));
+});
 
 app.get('/file/:name', function (req, res, next) {
 
-  var stats = fs.statSync('./public/'+req.params.name);
+  var stats = fs.statSync('C:/Users/Rafael/Dropbox/public/'+req.params.name);
   var mtime = new Date(util.inspect(stats.mtime));
   console.log(mtime);
 
   var options = {
-    root: __dirname + '/public/',
+    root: 'C:/Users/Rafael/Dropbox/public/',
     headers: {
         'x-timestamp': Date.now(),
         'x-sent': true,
